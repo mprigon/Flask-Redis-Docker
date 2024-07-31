@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" >
+    {{ form.csrf_token }}
+    {{ form.username.label() }} {{ form.username() }}
+    {{ form.password.label() }} {{ form.password() }}
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% endblock %}

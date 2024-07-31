@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<h5>Обновить данные пользователя</h5>
+
+Пользователь {{ pk }}
+
+<form method="POST" >
+    {{ form.csrf_token }}
+    {{ form.name.label() }} {{ form.name(placeholder=user_data['name']) }}
+    {{ form.secondName.label() }} {{ form.secondName(placeholder=user_data['secondName']) }}
+    {{ form.age.label() }} {{ form.age(placeholder=user_data['age']) }}
+    {{ form.skills.label() }} {{ form.skills(placeholder=user_data['skills']) }}
+    {{ form.hobby.label() }} {{ form.hobby(placeholder=user_data['hobby']) }}
+    {{ form.update(class='btn btn-primary') }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<h5>Add new user</h5>
+
+<!--{{ wtf.quick_form(form) }}-->
+
+<form method="POST" >
+    {{ form.csrf_token }}
+    {{ form.name.label() }} {{ form.name(placeholder='Enter your name') }}
+    {{ form.secondName.label() }} {{ form.secondName() }}
+    {{ form.username.label() }} {{ form.username(placeholder='Your username for login') }}
+    {{ form.password.label() }}  {{ form.password() }}
+    {{ form.age.label() }} {{ form.age() }}
+    {{ form.skills.label() }} {{ form.skills() }}
+    {{ form.hobby.label() }} {{ form.hobby() }}
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+
+{% endblock %}

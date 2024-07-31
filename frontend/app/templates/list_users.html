@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4>Все пользователи</h4>
+
+<table class="table table-striped table-responsive">
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Логин</th>
+        <th scope="col">Возраст</th>
+        <th scope="col">Умения</th>
+        <th scope="col">Хобби</th>
+        <th scope="col">Обновить</th>
+    </tr>
+    </thead>
+
+    {% for u in users_keys %}
+        <tr>
+            <td>{{ u }}</td>
+            <td>{{ dict_users[u]['name'] }}</td>
+            <td>{{ dict_users[u]['secondName'] }}</td>
+            <td>{{ dict_users[u]['username'] }}</td>
+            <td>{{ dict_users[u]['age'] }}</td>
+            <td>{{ dict_users[u]['skills'] }}</td>
+            <td>{{ dict_users[u]['hobby'] }}</td>
+            {% if is_authenticated == True and u == user_id %}
+                <td><a href="{{ url_for('main.update_user', pk=u) }}" class="btn btn-success" role="button">Update</a></td>
+            {% else %}
+                <td><a href="{{ url_for('main.update_user', pk=u) }}" class="btn btn-primary disabled" role="button">Update</a></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
